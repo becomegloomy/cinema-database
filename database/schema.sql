@@ -5,8 +5,8 @@ USE `кинотеатр`;
 -- Таблица: cinema
 CREATE TABLE IF NOT EXISTS `cinema` (
   `cinema_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20) NOT NULL,
-  `address` VARCHAR(50) NOT NULL, 
+  `name` VARCHAR(50) NOT NULL,
+  `address` VARCHAR(150) NOT NULL, 
   `phone` VARCHAR(11) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   `director` VARCHAR(30) NOT NULL,
@@ -43,17 +43,17 @@ CREATE TABLE IF NOT EXISTS `hall` (
 -- Таблица: director
 CREATE TABLE IF NOT EXISTS `director` (
   `director_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(30) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`director_id`)
 ) ENGINE = InnoDB;
 
 -- Таблица: film
 CREATE TABLE IF NOT EXISTS `film` (
   `film_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(40) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `year` YEAR NOT NULL,
   `director_id` INT NOT NULL,
-  `duration` TINYINT NOT NULL,
+  `duration` SMALLINT NOT NULL,
   `description` TEXT NOT NULL,
   PRIMARY KEY (`film_id`),
   INDEX `director_id_idx` (`director_id` ASC) VISIBLE,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `film` (
 -- Таблица: genre
 CREATE TABLE IF NOT EXISTS `genre` (
   `genre_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(20) NOT NULL,
+  `name` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`genre_id`)
 ) ENGINE = InnoDB;
 
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `film_genre` (
 -- Таблица: cashier
 CREATE TABLE IF NOT EXISTS `cashier` (
   `cashier_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(30) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `phone` VARCHAR(11) NOT NULL,
   PRIMARY KEY (`cashier_id`)
 ) ENGINE = InnoDB;
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `session` (
 -- Таблица: client
 CREATE TABLE IF NOT EXISTS `client` (
   `client_id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(30) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `phone` VARCHAR(11) NOT NULL,
   `email` VARCHAR(50) NOT NULL,
   PRIMARY KEY (`client_id`)
@@ -158,9 +158,3 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `status` ENUM('paid', 'refunded') NOT NULL,
   PRIMARY KEY (`payment_id`)
 ) ENGINE = InnoDB;
-
--- Связь билета с платежом
-ALTER TABLE `ticket`
-  ADD CONSTRAINT `fk_ticket_payment`
-  FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`)
-  ON DELETE SET NULL ON UPDATE CASCADE;

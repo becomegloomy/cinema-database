@@ -1,6 +1,9 @@
 USE `кинотеатр`;
 DELIMITER //
 
+DROP FUNCTION IF EXISTS count_sold_tickets;
+DROP FUNCTION IF EXISTS get_total_payment;
+
 -- Подсчет количества проданных билетов на сеанс
 CREATE FUNCTION count_sold_tickets(p_session_id INT)
 RETURNS INT

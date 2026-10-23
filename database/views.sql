@@ -1,5 +1,8 @@
 USE `кинотеатр`;
 
+DROP VIEW IF EXISTS planned_sessions_cashiers;
+DROP VIEW IF EXISTS ticket_info;
+
 -- Представление: сеансы и назначенные на них кассиры
 CREATE VIEW planned_sessions_cashiers AS
 SELECT 

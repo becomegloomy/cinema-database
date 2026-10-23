@@ -1,6 +1,8 @@
 USE `кинотеатр`;
 DELIMITER //
 
+DROP PROCEDURE IF EXISTS refund_ticket;
+
 -- Процедура возврата билета
 CREATE PROCEDURE refund_ticket(IN p_ticket_id INT)
 BEGIN
