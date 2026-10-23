@@ -1,1 +1,19 @@
-
+{
+  "name": "cinema-server",
+  "version": "1.0.0",
+  "description": "Backend for Cinema Management System",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["cinema", "express", "mysql"],
+  "author": "Sakharova S.A.",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.14.1"
+  }
+}
